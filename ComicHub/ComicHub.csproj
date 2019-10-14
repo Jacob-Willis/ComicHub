@@ -24,6 +24,18 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\models\comic-book-characters.model.ts" />
+    <None Remove="ClientApp\src\app\models\comic-book-information.model.ts" />
+    <None Remove="ClientApp\src\app\services\comic-book-information.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\models\comic-book-information.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\comic-book-characters.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\comic-book-information.service.ts" />
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
