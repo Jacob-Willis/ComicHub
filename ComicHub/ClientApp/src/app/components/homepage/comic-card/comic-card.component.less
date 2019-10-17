@@ -1,0 +1,41 @@
+
+.card {
+  width: 21rem;
+  height: 750px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 15px;
+}
+
+.card:hover {
+  box-shadow: 2px 2px red;
+  background-color: lightcyan;
+  border: red;
+  cursor: pointer;
+}
+
+.card-body {
+  overflow: hidden;
+  max-height: 50%;
+
+  .card-img-top {
+    height: 50%;
+  }
+
+  .card-title {
+    max-height: 5%;
+  }
+
+  .card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 32%;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+  }
+}
