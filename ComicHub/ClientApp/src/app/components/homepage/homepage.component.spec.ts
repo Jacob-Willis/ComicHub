@@ -104,10 +104,9 @@ describe('HomepageComponent', () => {
     expect(component.comicBookInformation).toContain(comicBookInformationOne);
   });
 
-  it('Should contain a card for the comic', () => {
+  it('Should contain a card', () => {
     const titleDe = fixture.debugElement.query(By.css('.comic-card'));
 
-    expect(titleDe.children.length).toBe(1);
     expect(titleDe).toBeTruthy();
   });
 });
