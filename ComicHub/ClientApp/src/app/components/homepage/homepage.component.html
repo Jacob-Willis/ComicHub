@@ -1,1 +1,3 @@
-<p>homepage works!</p>
+<div class="comic-container" *ngIf="comicBookInformation">
+    <app-comic-card class="comic-card" *ngFor="let comicBook of comicBookInformation" [comicBook]="comicBook"></app-comic-card>
+</div>

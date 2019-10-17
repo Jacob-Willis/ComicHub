@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
+import { By } from '@angular/platform-browser';
 // services
 import { ComicBookInformationService } from 'src/app/services/comic-book-information.service';
 // components
@@ -7,6 +8,7 @@ import { HomepageComponent } from './homepage.component';
 // models
 import { IComicBookInformation } from 'src/app/models/comic-book-information.model';
 import { IComicBookCharacter } from 'src/app/models/comic-book-characters.model';
+import { ComicCardComponent } from './comic-card/comic-card.component';
 
 const comicCharacterOne: IComicBookCharacter = {
   id: 1,
@@ -73,7 +75,8 @@ describe('HomepageComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [
-        HomepageComponent
+        HomepageComponent,
+        ComicCardComponent
       ],
       imports: [],
       providers: [
@@ -89,15 +92,21 @@ describe('HomepageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call LoadComicBooks correctly and return a list of comic books and its information', () => {
+  it('Should call LoadComicBooks correctly and return a list of comic books and its information', () => {
     component.comicBookInformation = [];
 
     component.LoadComicBooks();
 
     expect(component.comicBookInformation).toContain(comicBookInformationOne);
+  });
+
+  it('Should contain a card', () => {
+    const titleDe = fixture.debugElement.query(By.css('.comic-card'));
+
+    expect(titleDe).toBeTruthy();
   });
 });
