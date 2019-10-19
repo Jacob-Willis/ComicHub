@@ -12,7 +12,6 @@ const httpOptions = {
 export class ComicBookInformationService {
 
   endpoint = 'https://propertymecomics.s3.amazonaws.com/';
-  // https://propertymecomics.s3.amazonaws.com/comics
 
   comicBookInformation: IComicBookInformation[] = [];
 
@@ -28,4 +27,8 @@ export class ComicBookInformationService {
     this.comicBookInformation = information;
   }
 
+  getComicBook(id: string): IComicBookInformation {
+    const result = this.comicBookInformation.filter(c => c.id.toString() === id);
+    return result[0];
+  }
 }

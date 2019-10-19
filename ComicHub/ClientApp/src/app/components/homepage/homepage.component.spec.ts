@@ -8,7 +8,8 @@ import { HomepageComponent } from './homepage.component';
 // models
 import { IComicBookInformation } from 'src/app/models/comic-book-information.model';
 import { IComicBookCharacter } from 'src/app/models/comic-book-characters.model';
-import { ComicCardComponent } from './comic-card/comic-card.component';
+import { ComicCardComponent } from './comics/comic-card/comic-card.component';
+
 
 const comicCharacterOne: IComicBookCharacter = {
   id: 1,
