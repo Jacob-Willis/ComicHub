@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 // Services
-import { ComicBookInformationService } from 'src/app/services/comic-book-information.service';
+import { ComicBookInformationService } from '../../services/comic-book-information.service';
 // Models
-import { IComicBookInformation } from 'src/app/models/comic-book-information.model';
+import { IComicBookInformation } from '../../models/comic-book-information.model';
 
 @Component({
   selector: 'app-homepage',

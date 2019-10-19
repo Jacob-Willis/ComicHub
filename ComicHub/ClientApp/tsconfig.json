@@ -18,14 +18,7 @@
       "es2018",
       "dom"
     ],
-    "paths": {
-      "my-shared-library": [
-        "dist/my-shared-library"
-      ],
-      "my-shared-library/*": [
-        "dist/my-shared-library/*"
-      ]
-    }
+    "paths": { }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
