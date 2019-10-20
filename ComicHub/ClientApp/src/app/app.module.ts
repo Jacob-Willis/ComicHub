@@ -11,6 +11,7 @@ import { ComicCardComponent } from './components/homepage/comics/comic-card/comi
 import { ComicPageComponent } from './components/homepage/comics/comic-page/comic-page.component';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { CharacterCardComponent } from './components/homepage/comics/character-card/character-card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     HomepageComponent,
     ComicCardComponent,
     ComicPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CharacterCardComponent
   ],
   imports: [
     BrowserModule,

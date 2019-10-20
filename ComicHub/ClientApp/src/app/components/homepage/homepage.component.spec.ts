@@ -2,12 +2,13 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 // services
-import { ComicBookInformationService } from 'src/app/services/comic-book-information.service';
+import { ComicBookInformationService } from '../../services/comic-book-information.service';
+import { Router } from '@angular/router';
 // components
 import { HomepageComponent } from './homepage.component';
 // models
-import { IComicBookInformation } from 'src/app/models/comic-book-information.model';
-import { IComicBookCharacter } from 'src/app/models/comic-book-characters.model';
+import { IComicBookInformation } from '../../models/comic-book-information.model';
+import { IComicBookCharacter } from '../../models/comic-book-characters.model';
 import { ComicCardComponent } from './comics/comic-card/comic-card.component';
 
 
@@ -70,18 +71,22 @@ describe('HomepageComponent', () => {
 
   beforeEach(async(() => {
     const spyComicBookInformationService = jasmine.createSpyObj('ComicBookInformationService', {
-      getComicBookInformation: of([comicBookInformationOne, comicBookInformationTwo]),
+      loadComicBookInformation: of([comicBookInformationOne, comicBookInformationTwo]),
       setComicBookInformation: true,
     });
 
     TestBed.configureTestingModule({
       declarations: [
         HomepageComponent,
-        ComicCardComponent
+        ComicCardComponent,
       ],
       imports: [],
       providers: [
-        { provide: ComicBookInformationService, useValue: spyComicBookInformationService }
+        { provide: ComicBookInformationService, useValue: spyComicBookInformationService },
+        {
+          provide: Router,
+          useClass: class { navigate = jasmine.createSpy("navigate"); }
+        }
       ]
     })
       .compileComponents();

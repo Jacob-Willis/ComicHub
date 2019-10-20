@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ComicBookInformationService } from '../../services/comic-book-information.service';
 // Models
 import { IComicBookInformation } from '../../models/comic-book-information.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -15,7 +16,9 @@ export class HomepageComponent implements OnInit {
   comicBookInformation: IComicBookInformation[] = [];
 
   constructor(
-  private comicBookInformationService: ComicBookInformationService) { }
+    private comicBookInformationService: ComicBookInformationService,
+    private router: Router
+) { }
 
   ngOnInit() {
     this.LoadComicBooks();
@@ -23,7 +26,7 @@ export class HomepageComponent implements OnInit {
 
 
   LoadComicBooks() {
-    this.comicBookInformationService.getComicBookInformation().subscribe(
+    this.comicBookInformationService.loadComicBookInformation().subscribe(
       (information) => {
         this.comicBookInformation = information;
         this.comicBookInformationService.setComicBookInformation(information);
@@ -31,5 +34,9 @@ export class HomepageComponent implements OnInit {
       (error) => {
         console.log(error);
       });
+  }
+
+  loadComic(comic: IComicBookInformation) {
+    this.router.navigate(['/', 'homepage', comic.slug]);
   }
 }

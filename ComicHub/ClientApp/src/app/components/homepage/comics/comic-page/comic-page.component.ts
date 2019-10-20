@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ComicBookInformationService } from 'src/app/services/comic-book-information.service';
-import { IComicBookInformation } from 'src/app/models/comic-book-information.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ComicBookInformationService } from '../../../../services/comic-book-information.service';
+import { IComicBookInformation } from '../../../../models/comic-book-information.model';
 
 @Component({
   selector: 'app-comic-page',
@@ -14,15 +14,29 @@ export class ComicPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private comicInformation: ComicBookInformationService
+    private comicInformation: ComicBookInformationService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.loadInformation();
+    if (this.comicInformation.comicBookInformation.length === 0) {
+      this.comicInformation.loadComicBookInformation().subscribe(
+        (information) => {
+          this.comicInformation.setComicBookInformation(information);
+          this.loadInformation();
+        },
+        (error) => console.log(error));
+    } else {
+      this.loadInformation();
+    }
   }
 
   loadInformation() {
-    const id = this.route.snapshot.paramMap.get("id");
+    const id = this.route.snapshot.paramMap.get("id"); 
     this.comicBook = this.comicInformation.getComicBook(id);
+  }
+
+  backPage() {
+    this.router.navigate(['/', 'homepage']);
   }
 }

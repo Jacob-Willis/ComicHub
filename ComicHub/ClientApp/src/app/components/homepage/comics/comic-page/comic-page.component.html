@@ -1,7 +1,33 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<p>comic-page works!</p>
-
-<div>
-  {{comicBook.id}}
+<div class="comic-container">
+  <div class="header">
+    <button type="button" class="back btn btn-primary" (click)="backPage()">Back</button>
+  </div>
+  <div class="comic-book">
+    <img class="image" src="{{comicBook.image}}"/>
+    <div class="comic-text">
+      <h1 class="comic-title">{{comicBook.name}}</h1>
+      <div class="issue-number">
+        <h4>Issue Number:</h4>
+        <h4>{{comicBook.issueNumber}}</h4>
+      </div>
+      <div class="pages">
+        <h4>Pages:</h4>
+        <h4>{{comicBook.pages}}</h4>
+      </div>
+      <div class="release-date">
+        <h4>Release Date:</h4>
+        <h4>{{comicBook.releaseDate | date:'dd/MM/yyy'}}</h4>
+      </div>
+      <div class="price">
+        <h4>Price:</h4>
+        <h4>{{comicBook.price | currency}}</h4>
+      </div>
+      <div class="comic-description">{{comicBook.description}}</div>
+    </div>
+  </div>
+  <div class="characters-containter">
+    <app-character-card *ngFor="let character of comicBook.characters" [character]="character"></app-character-card>
+  </div>
 </div>
