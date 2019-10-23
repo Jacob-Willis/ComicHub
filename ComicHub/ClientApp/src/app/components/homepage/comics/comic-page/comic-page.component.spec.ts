@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router, ActivatedRoute } from '@angular/router';
+import { By } from '@angular/platform-browser';
 
 import { ComicPageComponent } from './comic-page.component';
 import { ComicBookInformationService } from 'src/app/services/comic-book-information.service';
@@ -126,6 +127,13 @@ describe('ComicPageComponent', () => {
     expect(releaseDate.textContent).toContain(currentDate.getDate());
     expect(releaseDate.textContent).toContain(currentDate.getMonth());
     expect(releaseDate.textContent).toContain(currentDate.getFullYear());
+  });
+
+  it('Should have two comics', () => {
+    const comicCard = testHostFixture.debugElement.nativeElement.querySelectorAll(".characters-card");
+
+    expect(comicCard).toBeTruthy();
+    expect(comicCard.length).toBe(2);
   });
 
   @Component({

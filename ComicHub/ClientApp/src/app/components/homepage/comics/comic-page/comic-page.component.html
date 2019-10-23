@@ -5,7 +5,7 @@
     <button type="button" class="back btn btn-primary" (click)="backPage()">Back</button>
   </div>
   <div class="comic-book">
-    <img class="image" src="{{comicBook.image}}"/>
+    <img class="image" src="{{comicBook.image}}" alt="Image not found" />
     <div class="comic-text">
       <h1 class="comic-title">{{comicBook.name}}</h1>
       <div class="issue-number">
@@ -27,7 +27,10 @@
       <div class="comic-description">{{comicBook.description}}</div>
     </div>
   </div>
-  <div class="characters-containter">
-    <app-character-card *ngFor="let character of comicBook.characters" [character]="character"></app-character-card>
+  <div class="characters-card" *ngFor="let character of comicBook.characters">
+    <app-character-card [character]="character"></app-character-card>
   </div>
 </div>
+
+
+<!--[ngClass]="{'highlight': character.numberOfRoles > 2000}"-->
