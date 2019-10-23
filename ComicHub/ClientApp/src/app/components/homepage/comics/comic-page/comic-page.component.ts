@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { ComicBookInformationService } from '../../../../services/comic-book-information.service';
 import { IComicBookInformation } from '../../../../models/comic-book-information.model';
@@ -9,7 +11,7 @@ import { IComicBookInformation } from '../../../../models/comic-book-information
   styleUrls: ['./comic-page.component.less']
 })
 export class ComicPageComponent implements OnInit {
-
+  faPlus = faPlus;
   comicBook: IComicBookInformation;
 
   constructor(

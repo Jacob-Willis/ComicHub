@@ -1,9 +1,9 @@
 .comic-container {
   flex-direction: row;
-  margin-left: 70px;
+  margin-left: 30px;
+  margin-right: 30px;
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
 }
 
 .header {
@@ -53,7 +53,7 @@
 
 .characters-card {
   width: 30%;
-  height: 1200px;
+  height: 1100px;
   vertical-align: middle;
   margin: 20px;
   border: 1px solid black;
@@ -62,4 +62,21 @@
 
 .highlight{
   box-shadow: 0px 0px 10px 10px yellow;
+  border: 2px solid red;
+}
+
+.characters-header {
+  width: 100%;
+  border-bottom: 2px solid black;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  margin-top: 30px;
+
+  .character-heading {
+    float: left;
+  }
+
+  .add-character {
+    float: right;
+  }
 }

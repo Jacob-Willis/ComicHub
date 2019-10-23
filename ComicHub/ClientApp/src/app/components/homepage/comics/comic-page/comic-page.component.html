@@ -27,6 +27,10 @@
       <div class="comic-description">{{comicBook.description}}</div>
     </div>
   </div>
+  <div class="characters-header">
+    <h2 class="character-heading">Characters: </h2>
+    <button type="button" class="btn btn-primary add-character"><fa-icon [icon]="faPlus"></fa-icon></button>
+  </div>
   <div class="characters-card" [ngClass]="{'highlight': character.numberOfRoles > 2000}" *ngFor="let character of comicBook.characters">
     <app-character-card [character]="character"></app-character-card>
   </div>
