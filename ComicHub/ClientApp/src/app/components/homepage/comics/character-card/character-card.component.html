@@ -5,4 +5,7 @@
   <h5 class="card-title">{{character.name}}</h5>
   <h6 class="card-num_roles">Number of Roles: {{character.numberOfRoles}}</h6>
   <p class="card-text">{{character.description}}</p>
+  <div class="card-footer">
+    <button type="button" class="btn btn-primary delete-character" (click)="deleteCharacter()"><fa-icon [icon]="faTimes"></fa-icon></button>
+  </div>
 </div>
