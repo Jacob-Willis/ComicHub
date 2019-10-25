@@ -32,7 +32,7 @@
     <button type="button" class="btn btn-primary add-character" (click)="openModal(addComicCharacter)"><fa-icon [icon]="faPlus"></fa-icon></button>
   </div>
   <div class="characters-card" [ngClass]="{'highlight': character.numberOfRoles > 2000}" *ngFor="let character of comicBook.characters">
-    <app-character-card [character]="character"></app-character-card>
+    <app-character-card [character]="character" (emitCharacter)="deleteCharacter($event)"></app-character-card>
   </div>
 </div>
 

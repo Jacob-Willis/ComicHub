@@ -1,9 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { IComicBookCharacter } from 'src/app/models/comic-book-characters.model';
-
-import { ComicBookInformationService } from 'src/app/services/comic-book-information.service';
 
 @Component({
   selector: 'app-character-card',
@@ -12,14 +10,15 @@ import { ComicBookInformationService } from 'src/app/services/comic-book-informa
 })
 export class CharacterCardComponent implements OnInit {
   @Input() character: IComicBookCharacter;
+  @Output() emitCharacter: EventEmitter<IComicBookCharacter> = new EventEmitter();
   faTimes = faTimes
 
-  constructor(private comicService: ComicBookInformationService) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
   deleteCharacter() {
-    // service call to delete character and update other components
+    this.emitCharacter.emit(this.character);
   }
 }
