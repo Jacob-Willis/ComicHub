@@ -11,7 +11,8 @@ const httpOptions = {
 @Injectable()
 export class ComicBookInformationService {
 
-  endpoint = 'https://propertymecomics.s3.amazonaws.com/';
+  endpoint = 'http://localhost:3000';
+  // https://propertymecomics.s3.amazonaws.com/comics
 
   comicBookInformation: IComicBookInformation[] = [];
 
@@ -19,7 +20,7 @@ export class ComicBookInformationService {
   }
 
   loadComicBookInformation(): Observable<IComicBookInformation[]> {
-    const url = this.endpoint + 'comics';
+    const url = this.endpoint + '/comics';
     return this.http.get<IComicBookInformation[]>(url);
   }
 
