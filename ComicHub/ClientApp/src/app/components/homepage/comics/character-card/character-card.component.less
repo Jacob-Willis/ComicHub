@@ -1,9 +1,10 @@
 .card-img-top {
-  height: 65%;
+  height: 50%;
+  border-bottom: 1px solid black;
 }
 
 .card-body {
-  max-height: 50%;
+  max-height: 30%;
 
   .card-title {
     max-height: 30%;
@@ -13,7 +14,13 @@
     max-height: 70%;
     display: -webkit-box;
     overflow: hidden;
-    -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
+  }
+
+  .card-footer {
+    height: 20%;
+    .delete-character {
+      float: right;
+    }
   }
 }

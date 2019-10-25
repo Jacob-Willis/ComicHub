@@ -1,9 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
-import { By } from '@angular/platform-browser';
 // models
-import { IComicBookInformation } from 'src/app/models/comic-book-information.model';
-import { IComicBookCharacter } from 'src/app/models/comic-book-characters.model';
+import { IComicBookInformation } from '../../../../models/comic-book-information.model';
+import { IComicBookCharacter } from '../../../../models/comic-book-characters.model';
 import { ComicCardComponent } from './comic-card.component';
 import { Component, ViewChild } from '@angular/core';
 

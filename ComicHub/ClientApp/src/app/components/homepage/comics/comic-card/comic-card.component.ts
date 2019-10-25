@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IComicBookInformation } from '../../models/comic-book-information.model';
+import { IComicBookInformation } from '../../../../models/comic-book-information.model';
 
 @Component({
   selector: 'app-comic-card',

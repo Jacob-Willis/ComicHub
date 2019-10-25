@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { IComicBookInformation } from '../models/comic-book-information.model';
 
@@ -18,7 +18,7 @@ export class ComicBookInformationService {
   constructor(private http: HttpClient) {
   }
 
-  getComicBookInformation(): Observable<IComicBookInformation[]> {
+  loadComicBookInformation(): Observable<IComicBookInformation[]> {
     const url = this.endpoint + 'comics';
     return this.http.get<IComicBookInformation[]>(url);
   }
@@ -27,8 +27,8 @@ export class ComicBookInformationService {
     this.comicBookInformation = information;
   }
 
-  getComicBook(id: string): IComicBookInformation {
-    const result = this.comicBookInformation.filter(c => c.id.toString() === id);
+  getComicBook(slug: string): IComicBookInformation {
+    const result = this.comicBookInformation.filter(c => c.slug === slug);
     return result[0];
   }
 }
