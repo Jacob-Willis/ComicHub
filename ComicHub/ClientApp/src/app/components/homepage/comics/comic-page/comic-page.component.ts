@@ -67,19 +67,30 @@ export class ComicPageComponent implements OnInit {
   }
 
   closeModal() {
-    this.modalService.hide(1);
+    this.modalService._hideModal(1);
     this.resetValues();
   }
 
   submitForm(data: any) {
-    this.newCharacter.description = "asdfasd";
-    console.log(JSON.stringify(this.newCharacter));
-    console.log(data);
     if (this.isValidated()) {
-      // add to service list
+      this.addNewCharacter();
       this.closeModal();
-      this.resetValues();
     }
+  }
+
+  addNewCharacter() {
+    const oldArray = this.comicBook.characters;
+    this.comicBook.characters = [];
+    this.newCharacter.id = oldArray.length + 1;
+    this.comicBook.characters.push(this.newCharacter);
+    for (let i = 0; i < oldArray.length; i++) {
+      this.comicBook.characters.push(oldArray[i]);
+    }
+    this.comicInformation.updateComicBook(this.comicBook);
+  }
+
+  deleteCharacter(character: IComicBookCharacter) {
+    this.comicInformation.deleteCharacter(this.comicBook, character);
   }
 
   resetValues() {
