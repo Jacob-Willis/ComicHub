@@ -9,7 +9,11 @@ import { IComicBookInformation } from 'src/app/models/comic-book-information.mod
 import { IComicBookCharacter } from 'src/app/models/comic-book-characters.model';
 import { CharacterCardComponent } from '../character-card/character-card.component';
 import { Component, ViewChild } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { ComponentLoaderFactory } from 'ngx-bootstrap/component-loader';
+import { PositioningService } from 'ngx-bootstrap/positioning';
 
 const comicCharacterOne: IComicBookCharacter = {
   id: 1,
@@ -27,6 +31,15 @@ const comicCharacterTwo: IComicBookCharacter = {
   numberOfRoles: 10000,
   isGood: false,
   image: 'imageUrlTwo'
+}
+
+const newComicCharacter: IComicBookCharacter = {
+  id: null,
+  name: 'Newbie',
+  description: 'New',
+  numberOfRoles: 1,
+  isGood: true,
+  image: 'newImage'
 }
 
 const comicBookInformationOne: IComicBookInformation = {
@@ -47,10 +60,12 @@ describe('ComicPageComponent', () => {
   let testHostFixture: ComponentFixture<TestHostComponent>;
 
   beforeEach(async(() => {
+
     const spyComicBookInformationService = jasmine.createSpyObj('ComicBookInformationService', {
       getComicBookInformation: of([comicBookInformationOne]),
       setComicBookInformation: true,
       getComicBook: comicBookInformationOne,
+      updateComicBook: true,
     });
 
     TestBed.configureTestingModule({
@@ -76,7 +91,15 @@ describe('ComicPageComponent', () => {
             },
           },
         },
-        { provide: ComicBookInformationService, useValue: spyComicBookInformationService }]
+        { provide: ComicBookInformationService, useValue: spyComicBookInformationService },
+        BsModalService,
+        ComponentLoaderFactory,
+        PositioningService
+      ],
+      imports: [
+        FontAwesomeModule,
+        FormsModule,
+      ]
     })
     .compileComponents();
   }));
@@ -136,6 +159,14 @@ describe('ComicPageComponent', () => {
     expect(comicCard.length).toBe(2);
   });
 
+  it('Should update radio buttons correctly', () => {
+    testHostComponent.comicComponent.updateRadioBtn('good');
+    expect(testHostComponent.comicComponent.newCharacter.isGood).toBeTruthy();
+
+    testHostComponent.comicComponent.updateRadioBtn('bad');
+    expect(testHostComponent.comicComponent.newCharacter.isGood).toBeFalsy();
+  });
+
   @Component({
     selector: 'app-comic-page',
     templateUrl: './comic-page.component.html',
@@ -143,6 +174,13 @@ describe('ComicPageComponent', () => {
   class TestHostComponent {
     @ViewChild(ComicPageComponent, { static: false })
     public comicPageComponent: ComicPageComponent;
+
+    route: ActivatedRoute;
+    spyComicBookInformationService: ComicBookInformationService;
+    router: Router;
+    modalService: BsModalService;
+    public comicComponent = new ComicPageComponent(this.route, this.spyComicBookInformationService, this.router, this.modalService);
+
     private comicBook: IComicBookInformation = comicBookInformationOne;
 
     setInput(newInput: IComicBookInformation) {

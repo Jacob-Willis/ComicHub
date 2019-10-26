@@ -6,6 +6,20 @@
   <h6 class="card-num_roles">Number of Roles: {{character.numberOfRoles}}</h6>
   <p class="card-text">{{character.description}}</p>
   <div class="card-footer">
-    <button type="button" class="btn btn-primary delete-character" (click)="deleteCharacter()"><fa-icon [icon]="faTimes"></fa-icon></button>
+    <button type="button" class="btn btn-primary delete-character" (click)="openModal(deleteConfirmation)"><fa-icon [icon]="faTimes"></fa-icon></button>
   </div>
 </div>
+
+
+<ng-template #deleteConfirmation>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Are you sure you want to delete {{character.name}}?</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <button type="button" class="btn btn-primary button-decline" (click)="closeModal()">No</button>
+    <button type="button" class="btn btn-primary button-accept" (click)="deleteCharacter()">Yes</button>
+  </div>
+</ng-template>

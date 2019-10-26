@@ -5,10 +5,6 @@ import { Observable, of } from 'rxjs';
 import { IComicBookInformation } from '../models/comic-book-information.model';
 import { IComicBookCharacter } from '../models/comic-book-characters.model';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
 @Injectable()
 export class ComicBookInformationService {
 
