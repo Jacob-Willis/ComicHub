@@ -65,7 +65,7 @@ const comicBookInformationTwo: IComicBookInformation = {
   characters: [comicCharacterTwo, comicCharacterThree]
 }
 
-describe('HomepageComponent', () => {
+fdescribe('HomepageComponent', () => {
   let component: HomepageComponent;
   let fixture: ComponentFixture<HomepageComponent>;
 

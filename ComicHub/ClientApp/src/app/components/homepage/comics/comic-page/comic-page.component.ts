@@ -31,16 +31,16 @@ export class ComicPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private comicInformation: ComicBookInformationService,
+    private comicInformationService: ComicBookInformationService,
     private router: Router,
     private modalService: BsModalService
   ) { }
 
   ngOnInit() {
-    if (this.comicInformation.comicBookInformation.length === 0) {
-      this.comicInformation.loadComicBookInformation().subscribe(
+    if (this.comicInformationService.comicBookInformation.length === 0) {
+      this.comicInformationService.loadComicBookInformation().subscribe(
         (information) => {
-          this.comicInformation.setComicBookInformation(information);
+          this.comicInformationService.setComicBookInformation(information);
           this.loadInformation();
         },
         (error) => console.log(error));
@@ -51,7 +51,7 @@ export class ComicPageComponent implements OnInit {
 
   loadInformation() {
     const id = this.route.snapshot.paramMap.get("id"); 
-    this.comicBook = this.comicInformation.getComicBook(id);
+    this.comicBook = this.comicInformationService.getComicBook(id);
   }
 
   updateRadioBtn(value: any) {
@@ -86,11 +86,11 @@ export class ComicPageComponent implements OnInit {
     for (let i = 0; i < oldArray.length; i++) {
       this.comicBook.characters.push(oldArray[i]);
     }
-    this.comicInformation.updateComicBook(this.comicBook);
+    this.comicInformationService.updateComicBook(this.comicBook);
   }
 
   deleteCharacter(character: IComicBookCharacter) {
-    this.comicInformation.deleteCharacter(this.comicBook, character);
+    this.comicInformationService.deleteCharacter(this.comicBook, character);
   }
 
   resetValues() {

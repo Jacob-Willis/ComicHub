@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CharacterCardComponent } from './character-card.component';
 import { IComicBookCharacter } from 'src/app/models/comic-book-characters.model';
 import { ViewChild, Component } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const comicCharacter: IComicBookCharacter = {
   id: 1,
@@ -22,6 +23,9 @@ describe('CharacterCardComponent', () => {
       declarations: [
         CharacterCardComponent,
         TestHostComponent
+      ],
+      imports: [
+        FontAwesomeModule
       ]
     })
     .compileComponents();
@@ -63,6 +67,12 @@ describe('CharacterCardComponent', () => {
 
     expect(description).toBeTruthy();
     expect(description.textContent).toContain('Description goes here');
+  });
+
+  it('Should show delete button', () => {
+    const button = testHostFixture.debugElement.nativeElement.querySelector('.delete-character');
+
+    expect(button).toBeTruthy();
   });
 
   @Component({
