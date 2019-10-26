@@ -55,7 +55,7 @@ const comicBookInformationOne: IComicBookInformation = {
   characters: [comicCharacterOne, comicCharacterTwo]
 }
 
-fdescribe('ComicPageComponent', () => {
+describe('ComicPageComponent', () => {
   let testHostComponent: TestHostComponent;
   let testHostFixture: ComponentFixture<TestHostComponent>;
 
@@ -165,15 +165,6 @@ fdescribe('ComicPageComponent', () => {
 
     testHostComponent.comicComponent.updateRadioBtn('bad');
     expect(testHostComponent.comicComponent.newCharacter.isGood).toBeFalsy();
-  });
-
-  fit('Should add new character to list', () => {
-    testHostComponent.comicComponent.newCharacter = newComicCharacter;
-    testHostComponent.comicComponent.comicBook = comicBookInformationOne;
-    expect(testHostComponent.comicComponent.comicBook.characters.length).toBe(2);
-
-    testHostComponent.comicComponent.addNewCharacter();
-    expect(testHostComponent.comicComponent.comicBook.characters.length).toBe(3);
   });
 
   @Component({
