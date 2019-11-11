@@ -2,7 +2,7 @@
 Is a basic project to demonstrate angular.
 
 Make sure that you run (in the ClientApp directory):
-* 'npm install json-server' to install the json-server for the mock server API
+* 'npm install json-server' - to install the json-server for the mock server API
 * 'npm install' - to initialise the node_modules file
 * 'npm install angular' - to install Angular for the application to run
   
