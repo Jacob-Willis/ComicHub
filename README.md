@@ -1,5 +1,10 @@
 # ComicHub
 Is a basic project to demonstrate angular.
+
+Make sure that you run:
+* 'npm install json-server'
+* 'npm install'
+* 'npm install angular'
   
 # How to run:
 
